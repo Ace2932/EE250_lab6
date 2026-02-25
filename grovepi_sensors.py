@@ -1,18 +1,12 @@
 import sys
 import os
-# Dexter libs: set DEXTER_HOME if your install isn't in ~/Dexter (e.g. export DEXTER_HOME=/home/pi/Dexter)
-_dex = os.environ.get('DEXTER_HOME') or os.path.expanduser('~/Dexter')
-# di_i2c must be on path before grovepi is imported (grovepi imports di_i2c). Add Scripts first.
-_candidates = (
-    os.path.join(_dex, 'Scripts'),           # di_i2c lives in Dexter/Scripts/di_i2c
-    os.path.join(_dex, 'GrovePi', 'Software', 'Python'),
-    os.path.join(_dex, 'Scripts', 'i2c-tools-3.1.0'),
-    os.path.join(_dex, 'GrovePi', 'Script'),
-    _dex,
-)
-for _p in _candidates:
-    if _p and _p not in sys.path:
-        sys.path.insert(0, _p)
+# Dexter libs: di_i2c must be on path before grovepi (grovepi imports it from Dexter/Scripts/di_i2c)
+_dex = os.environ.get('DEXTER_HOME') or '/home/pi/Dexter' if os.path.isdir('/home/pi/Dexter') else os.path.expanduser('~/Dexter')
+_scripts = os.path.join(_dex, 'Scripts')
+if _scripts not in sys.path:
+    sys.path.insert(0, _scripts)
+if os.path.join(_dex, 'GrovePi', 'Software', 'Python') not in sys.path:
+    sys.path.insert(0, os.path.join(_dex, 'GrovePi', 'Software', 'Python'))
 import time
 import grovepi
 from grove_rgb_lcd import *
