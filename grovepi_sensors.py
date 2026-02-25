@@ -1,6 +1,11 @@
 import sys
 import os
-sys.path.insert(0, os.path.expanduser('~/Dexter/GrovePi/Software/Python'))
+_dex = os.path.expanduser('~/Dexter')
+for _p in (os.path.join(_dex, 'GrovePi', 'Software', 'Python'),
+           os.path.join(_dex, 'GrovePi', 'Script'),
+           _dex):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
 import time
 import grovepi
 from grove_rgb_lcd import *
