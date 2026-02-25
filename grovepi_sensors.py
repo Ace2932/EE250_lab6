@@ -1,10 +1,13 @@
 import sys
 import os
-_dex = os.path.expanduser('~/Dexter')
+# Dexter libs: set DEXTER_HOME if your install isn't in ~/Dexter (e.g. export DEXTER_HOME=/home/pi/Dexter)
+_dex = os.environ.get('DEXTER_HOME') or os.path.expanduser('~/Dexter')
 for _p in (os.path.join(_dex, 'GrovePi', 'Software', 'Python'),
+           os.path.join(_dex, 'Scripts'),
+           os.path.join(_dex, 'Scripts', 'i2c-tools-3.1.0'),
            os.path.join(_dex, 'GrovePi', 'Script'),
            _dex):
-    if _p not in sys.path:
+    if os.path.isdir(_p) and _p not in sys.path:
         sys.path.insert(0, _p)
 import time
 import grovepi
