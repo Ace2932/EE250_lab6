@@ -1,5 +1,6 @@
 import sys
-sys.path.append('~/Dexter/GrovePi/Software/Python')
+import os
+sys.path.insert(0, os.path.expanduser('~/Dexter/GrovePi/Software/Python'))
 import time
 import grovepi
 from grove_rgb_lcd import *
@@ -28,13 +29,13 @@ while True:
 
     # Object present when raw ultrasonic output falls below threshold
     object_present = distance < threshold
-
+    # TODO: print the object present status on LCD
     # Top line: current threshold value + space, then " OBJ PRES" if object present
     line1 = f"{threshold} "
     if object_present:
       line1 += " OBJ PRES"
     line1 = (line1 + " " * 16)[:16]
-
+    
     # Bottom line: current raw ultrasonic ranger output
     line2 = (str(distance) + " " * 16)[:16]
 
