@@ -1,21 +1,27 @@
+# import sys
+# import os
+# # Dexter libs: di_i2c must be on path before grovepi (grovepi imports it from Dexter/Scripts/di_i2c)
+# _dex = os.environ.get('DEXTER_HOME') or '/home/pi/Dexter' if os.path.isdir('/home/pi/Dexter') else os.path.expanduser('~/Dexter')
+# _scripts = os.path.join(_dex, 'Scripts')
+# if _scripts not in sys.path:
+#     sys.path.insert(0, _scripts)
+# if os.path.join(_dex, 'GrovePi', 'Software', 'Python') not in sys.path:
+#     sys.path.insert(0, os.path.join(_dex, 'GrovePi', 'Software', 'Python'))
+# import time
+# import grovepi
+# from grove_rgb_lcd import *
+
 import sys
-import os
-# Dexter libs: di_i2c must be on path before grovepi (grovepi imports it from Dexter/Scripts/di_i2c)
-_dex = os.environ.get('DEXTER_HOME') or '/home/pi/Dexter' if os.path.isdir('/home/pi/Dexter') else os.path.expanduser('~/Dexter')
-_scripts = os.path.join(_dex, 'Scripts')
-if _scripts not in sys.path:
-    sys.path.insert(0, _scripts)
-if os.path.join(_dex, 'GrovePi', 'Software', 'Python') not in sys.path:
-    sys.path.insert(0, os.path.join(_dex, 'GrovePi', 'Software', 'Python'))
+sys.path.append('~/Dexter/GrovePi/Software/Python')
 import time
 import grovepi
 from grove_rgb_lcd import *
 
 # Grove Ultrasonic Ranger connectd to digital port 2
 ultrasonic_ranger = 2
-# Rotary angle sensor connected to analog port A1 (output [0, 1023])
-rotary_sensor = 1
-grovepi.pinMode(rotary_sensor, "INPUT")
+# Rotary angle sensor connected to analog port A0 (output [0, 1023])
+rotary_sensor = 0
+grovepi.pinMode(rotary_sensor, "ANALOG")
 
 # Ultrasonic range observed in testing [0, 517] cm
 ULTRASONIC_MAX = 517
