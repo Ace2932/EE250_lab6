@@ -51,7 +51,7 @@ while True:
     # Bottom line: current raw ultrasonic ranger output
     line2 = (str(distance) + " " * 16)[:16]
 
-    setText_norefresh(line1 + "\n" + line2)
+    setText_norefresh(" " + line1 + "cm" + "\n" + line2 + "cm")
 
   except IOError:
     print("Error")
