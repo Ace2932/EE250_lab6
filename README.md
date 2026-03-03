@@ -4,18 +4,23 @@
 file, and push it, you would use:
 
 ```bash
-git clone git@github.com:my-name/my-imaginary-repo.git
-cd my-imaginary-repo
-touch my_second_file.py
-echo 'print("Hello World")' > my_second_file.py
-git add my_second_file.py
-git commit -m "Add my_second_file.py"
+git clone git@github.com:aditbans/EE250_lab6.git
+cd EE250_lab6
+touch second_file.py
+echo 'print("Hello World")' > second_file.py
+git add second_file.py
+git commit -m "second_file.py"
 git push origin main
 ```
 
-4.2. Describe the workflow you adopted for this lab
 
-A highly efficient workflow for this lab is to utilize a command-line text editor like nano or vim. This allows you to SSH into the Raspberry Pi, edit your files directly on the hardware, immediately test the code with the live sensors, and then git commit and git push those changes directly from the Pi to GitHub. This avoids the repetitive overhead of pushing from a virtual machine just to pull it onto the Pi for testing.
+2. Describe the workflow you adopted for this lab (i.e. did you develop on your VM
+and push/pull to get code to your RPi, did you edit files directly on your RPi, etc.).
+Are there ways you might be more efficient in the next lab (i.e. learning a
+text-based editor so you can edit natively on the RPi, understanding Git
+commands better, etc.)?
+Edited on code editor and then pushed to github, went on raspberry pi and pulled changes. 
+This was really efficient and allowed coding comfortably on editor of choice while efficiently sending code to test. As much as using nano or vim on the pi is possible, we would prefer the documentation and history of github for the slight tradeoff of a few seconds between pulls and pushes. 
 
 4.3. Dig through the python library to find out why there is a constant delay. What
 communication protocol does the Raspberry Pi use?
