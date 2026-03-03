@@ -42,12 +42,12 @@ while True:
     # Object present when raw ultrasonic output falls below threshold
     object_present = distance < threshold
     # Top line: threshold value + " cm", then " OBJ PRES" if object present
-    line1 = f"{threshold} cm"
+    line2 = f"{threshold} cm"
     if object_present:
       line1 += " OBJ PRES"
     line1 = (line1 + " " * 16)[:16]
     # Bottom line: distance + " cm"
-    line2 = (f"{distance} cm" + " " * 16)[:16]
+    line1 = (f"{distance} cm" + " " * 16)[:16]
 
     setText_norefresh(line1 + "\n" + line2)
 
